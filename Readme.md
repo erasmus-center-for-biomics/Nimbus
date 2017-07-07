@@ -69,10 +69,6 @@ After a successfull run, the following output files will have been created.
 | combined.hg19.mut.txt       | The variants in the [mut](https://software.broadinstitute.org/software/igv/MutationData) format for [IGV](http://software.broadinstitute.org/software/igv/home) |
 
 
-### the blck format
-
-
-
 Build instructions
 ==================
 
