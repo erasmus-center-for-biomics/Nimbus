@@ -51,7 +51,7 @@ To run Nimbus, the tools in the Nimbus repository should be successfully compile
 In the default workflow, Annovar annotates the results with the refGene, genomicSuperDups, avsnp147, and gerp++gt2 databases. These should all be present at the Annovar database location. Other annotation databases can be added by downloading them via Annovar and adding them in the workflow at the `protocol` and `operation` variables.
 
 ### How to run the workflow
- 
+
 To run the Nimbus workflow, copy the FastQ files of the samples you wish to process in an directory. These FastQ files should be preferably named `${samplename}_R1.fastq` for read 1 and `${samplename}_R2.fastq`. These files can be compressed with `gzip`. The workflow can also be started with bam files that were previously aligned with `nimbus_align`.
 
 After preparing the run folder, set the following export variables and run the workflow with `make`.
@@ -154,14 +154,14 @@ for file in `ls *.blck`; do
   sample=${file/.blck/}
   echo "Processing ${sample} with nimbus_exomedepth.R"
   Rscript /path/to/nimbus_exomedepth.R \
-	--reference referenset.txt \
-	--input "${sample}.blck" \
-	--output "${sample}.cnv_calls.txt" \
-	--threshold 10 \
-	--nbins 10000 \
-	--transition 10^-4 \
-	--selection "${sample}.selection.txt" \
-	--amplicons "${sample}.amplicons.stats.txt" ;
+    --reference referenset.txt \
+    --input "${sample}.blck" \
+    --output "${sample}.cnv_calls.txt" \
+    --threshold 10 \
+    --nbins 10000 \
+    --transition 10^-4 \
+    --selection "${sample}.selection.txt" \
+    --amplicons "${sample}.amplicons.stats.txt" ;
 done
  ```
 
