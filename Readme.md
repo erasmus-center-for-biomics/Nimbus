@@ -78,7 +78,7 @@ After a successfull run, the following output files will have been created.
 | ${samplename}.discarded.bam | A BAM file with the discarded alignments |
 | ${samplename}.passed.bam    | A BAM file with the passed alignments |
 | ${samplename}.flagstat.txt  | A text file with the alignment statistics |
-| ${samplename}.srt.blck      | A blck file with the counts per amplicon for all the alignments | 
+| ${samplename}.srt.blck      | A blck file with the counts per amplicon for all the alignments |
 | ${samplename}.discarded.blck| A blck file with the counts per amplicon for the discarded alignments  |
 | ${samplename}.passed.blck   | A blck file with the counts per amplicon for the passed alignments |
 | combined.var.gz             | A var file with the sequence content at positions with an alternate allele |
