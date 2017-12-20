@@ -66,9 +66,11 @@ Trouble shooting
 ----------------
 
 Q) I do not know the enzymes that were used in the HaloPlex design.
+
 A) This information should be provided by Agilent. We are not allowed to disclose which enzymes are used in our designs.
 
 Q) The design expansion procedure fails for a HaloPlex HS design.
+
 A) This is correct. In the HaloPlex HS design the end of the amplicons should be expanded by 1 base on the leading strand and the start should be decreased on the lagging strand. The following Awk script performs this action.
 
 ```awk
