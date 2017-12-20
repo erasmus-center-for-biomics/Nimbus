@@ -5,7 +5,12 @@ Nimbus is a software suite for the analysis of amplicon based sequencing data. N
 
 A scientific publication describing Nimbus is currently in preparation.
 
+Guides
+------
+
 In the Nimbus manuscript, we describe an analysis of HaloPlex exome samples. For the HaloPlex exome, we expanded the design to include potential off-target amplicons. The methods for this expansion are shown [here](haloplex_design_expansion/Readme.md).
+
+The analisys of a set of uveal melanoma samples from a study by [Koopmans *et al*](https://www.nature.com/articles/modpathol201443) is available [here](guides/custom_haloplex_design/Readme.md).
 
 A guide on how to call structural variants with Nimbus is available [here](guides/structural_variant_calling/Readme.md).
 
