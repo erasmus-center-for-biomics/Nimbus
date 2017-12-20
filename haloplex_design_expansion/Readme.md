@@ -83,4 +83,4 @@ A) This is correct. In the HaloPlex HS design the end of the amplicons should be
 }
 ```
 
-This modification of the design is also required for the Nimbus alignment.
+Nimbus does not work with the original HaloPlex HS designs. This modification should solve this issue.
