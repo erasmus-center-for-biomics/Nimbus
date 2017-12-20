@@ -130,7 +130,7 @@ result <- ExomeDepth::CallCNVs(
     transition.probability = transition,
     chromosome = matcher[,2],
     start = parse_integer(matcher[,3]) + 1,
-    end = parse_integer(matcher[,3]) + 2,
+    end = parse_integer(matcher[,3]) + 1,
     name = block$key)
 
 cnv_calls <- as_tibble(result@CNV.calls) %>%
