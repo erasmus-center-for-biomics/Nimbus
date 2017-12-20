@@ -1,13 +1,13 @@
 Description
 ===========
 
-Nimbus is a software suite for the analysis of amplicon based sequencing data. Nimbus includes tools for data preprocessing, alignment, variant calling, quality control and 
-visualization. The source amplicons are tracked throughout alignment and variant calling allowing probable false positive variants present in a single amplicon to be distinguished 
-from real variants present in all amplicons at the locus. Nimbus also determines the number of reads mapped to each amplicon.
+Nimbus is a software suite for the analysis of amplicon based sequencing data. Nimbus includes tools for data preprocessing, alignment, variant calling, quality control and visualization. The source amplicons are tracked throughout alignment and variant calling allowing probable false positive variants present in a single amplicon to be distinguished from real variants present in all amplicons at the locus. Nimbus also determines the number of reads mapped to each amplicon.
 
-A scientific publication describing Nimbus is currently in preparation. 
+A scientific publication describing Nimbus is currently in preparation.
 
-In the Nimbus manuscript we describe an analysis of HaloPlex exome samples. For the HaloPlex exome, we expanded the design to include potential off-target amplicons. The methods for this expansion are shown [here](haloplex_design_expansion/Readme.md).
+In the Nimbus manuscript, we describe an analysis of HaloPlex exome samples. For the HaloPlex exome, we expanded the design to include potential off-target amplicons. The methods for this expansion are shown [here](haloplex_design_expansion/Readme.md).
+
+A guide on how to call structural variants with Nimbus is available [here](guides/structural_variant_calling/Readme.md).
 
 Build instructions
 ------------------
