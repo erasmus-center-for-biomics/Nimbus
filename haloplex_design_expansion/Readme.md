@@ -62,8 +62,8 @@ cat expanded_haloplex_design_mix_A.bed expanded_haloplex_design_mix_B.bed | \
     sort -k1,1 -k2,2n > expanded_haloplex_design.bed
 ```
 
-Trouble shooting
-----------------
+Troubleshooting
+---------------
 
 Q) I do not know the enzymes that were used in the HaloPlex design.
 
