@@ -1,6 +1,8 @@
 Nimbus on Uveal melanoma samples
 ================================
 
+This guide is based on data acquired from "Clinical significance of immunohistochemistry for detection of BAP1 mutations in uveal melanoma" by Anna E Koopmans, Robert M Verdijk, Rutger W W Brouwer, Thierry P P van den Bosch, Mike M P van den Berg, Jolanda Vaarwater, Christel E M Kockx, Dion Paridaens, Nicole C Naus, Mark Nellist, Wilfred F J van IJcken, Emine Kiliç & Annelies de Klein published in Modern Pathology (2014).
+
 Introduction
 ------------
 
