@@ -47,7 +47,7 @@ def count_amplicons(samin=None, quality=0, size=1000000):
         count = 0
         for _ in itergrp:
             count += 1
-        amplicons.append(amplicon, count)
+        amplicons.append((amplicon, count))
     amplicon_buffer = []
     amplicons.sort(key=operator.itemgetter(0))
 
@@ -96,6 +96,7 @@ def nimbus_count(samin=None, bedfile=sys.stdin, outstream=sys.stdout, quality=0)
     design.sort()
     unknown = []
     ampidx = 0
+    sys.stderr.write("Writing amplicons\n")
     # print the amplicons in the design
     for amplicon in design:
         while True:
