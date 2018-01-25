@@ -5,6 +5,7 @@ import os.path
 import sys
 import getopt
 import itertools
+import operator
 import pysam
 
 
@@ -12,7 +13,7 @@ def count_amplicons(samin=None, quality=0, size=1000000):
     """Count amplicons in the input samfile."""
     assert samin is not None
 
-    amplicons = {}
+    amplicons = []
     amplicon_buffer = []
 
     for alignment in samin.fetch(until_eof=True):
@@ -39,31 +40,16 @@ def count_amplicons(samin=None, quality=0, size=1000000):
         # add the amplicon to the buffer
         amplicon_buffer.append(amplicon)
 
-        # if the amplicon buffer is sufficiently large
-        # add the amplicons to the return dict
-        # if len(amplicon_buffer) >= size:
-        #     amplicon_buffer.sort()
-        #     for amplicon, itergrp in itertools.groupby(amplicon_buffer):
-        #         count = 0
-        #         for _ in itergrp:
-        #             count += 1
-        #         if amplicon not in amplicons.keys():
-        #             amplicons[amplicon] = count
-        #         else:
-        #             amplicons[amplicon] += count
-        #   amplicon_buffer = []
-
-    # add the final amplicons to the return dict
-    sys.stderr.write("Filled amplicon buffer with %d amplicon tags\n" % len(amplicon_buffer))
+    # sort the buffer and determine the number of reads per amplicon
     amplicon_buffer.sort()
-    sys.stderr.write("Sorted amplicon tags\n")
+
     for amplicon, itergrp in itertools.groupby(amplicon_buffer):
         count = 0
         for _ in itergrp:
             count += 1
-        amplicons[amplicon] = count
+        amplicons.append(amplicon, count)
     amplicon_buffer = []
-    sys.stderr.write("%d Amplicons detected\n" % len(amplicons.keys()))
+    amplicons.sort(key=operator.itemgetter(0))
 
     # return a dict with the amplicons and counts
     return amplicons
@@ -107,18 +93,27 @@ def nimbus_count(samin=None, bedfile=sys.stdin, outstream=sys.stdout, quality=0)
     """Count the number of alignments per amplicon."""
     amplicons = count_amplicons(samin, quality)
     design = design_from_bed(bedfile)
-
+    design.sort()
+    unknown = []
+    ampidx = 0
     # print the amplicons in the design
     for amplicon in design:
-        if amplicon in amplicons.keys():
-            outstream.write("%s\t%d\n" % (amplicon, amplicons[amplicon]))
-            del amplicons[amplicon]
-        else:
-            outstream.write("%s\t0\n" % (amplicon))
+        while True:
+            if amplicon == amplicons[ampidx][0]:
+                outstream.write("%s\t%d\n" % (amplicon, amplicons[ampidx][1]))
+                ampidx += 1
+                break
+            elif amplicon > amplicons[ampidx][0]:
+                unknown.append(amplicons[ampidx])
+                ampidx += 1
+                break
+            else:
+                outstream.write("%s\t0\n" % (amplicon))
+                break
 
     # print the unknown amplicons
     unknown = 0
-    for key, value in amplicons.items():
+    for key, value in unknown:
         unknown += value
         sys.stderr.write("UNKNOWN:%s\t%d\n" % (key, value))
     sys.stderr.write("%d Alignments for unknown amplicons detected\n" % unknown)
