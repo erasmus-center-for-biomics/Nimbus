@@ -9,7 +9,7 @@ import operator
 import pysam
 
 
-def count_amplicons(samin=None, quality=0, size=1000000):
+def count_amplicons(samin=None, quality=0):
     """Count amplicons in the input samfile."""
     assert samin is not None
 
@@ -96,7 +96,6 @@ def nimbus_count(samin=None, bedfile=sys.stdin, outstream=sys.stdout, quality=0)
     design.sort()
     unknown = []
     ampidx = 0
-    sys.stderr.write("Writing amplicons\n")
     # print the amplicons in the design
     for amplicon in design:
         while True:
@@ -113,11 +112,9 @@ def nimbus_count(samin=None, bedfile=sys.stdin, outstream=sys.stdout, quality=0)
                 break
 
     # print the unknown amplicons
-    unknown = 0
     for key, value in unknown:
-        unknown += value
         sys.stderr.write("UNKNOWN:%s\t%d\n" % (key, value))
-    sys.stderr.write("%d Alignments for unknown amplicons detected\n" % unknown)
+    sys.stderr.write("%d Alignments for unknown amplicons detected\n" % len(unknown))
 
 
 if __name__ == "__main__":
