@@ -14,6 +14,7 @@ def count_amplicons(samin=None, quality=0, size=1000000):
 
     amplicons = {}
     amplicon_buffer = []
+
     for alignment in samin.fetch(until_eof=True):
 
         # don't consider unmapped alignments
@@ -53,7 +54,9 @@ def count_amplicons(samin=None, quality=0, size=1000000):
         #   amplicon_buffer = []
 
     # add the final amplicons to the return dict
+    sys.stderr.write("Filled amplicon buffer with %d amplicon tags\n" % len(amplicon_buffer))
     amplicon_buffer.sort()
+    sys.stderr.write("Sorted amplicon tags\n")
     for amplicon, itergrp in itertools.groupby(amplicon_buffer):
         count = 0
         for _ in itergrp:
@@ -64,7 +67,7 @@ def count_amplicons(samin=None, quality=0, size=1000000):
             amplicons[amplicon] += count
     amplicon_buffer = []
     sys.stderr.write("%d Amplicons detected\n" % len(amplicons.keys()))
-        
+
     # return a dict with the amplicons and counts
     return amplicons
 
