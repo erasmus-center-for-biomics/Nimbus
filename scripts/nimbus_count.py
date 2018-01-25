@@ -61,10 +61,7 @@ def count_amplicons(samin=None, quality=0, size=1000000):
         count = 0
         for _ in itergrp:
             count += 1
-        if amplicon not in amplicons.keys():
-            amplicons[amplicon] = count
-        else:
-            amplicons[amplicon] += count
+        amplicons[amplicon] = count
     amplicon_buffer = []
     sys.stderr.write("%d Amplicons detected\n" % len(amplicons.keys()))
 
