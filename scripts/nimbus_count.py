@@ -4,14 +4,16 @@ import os
 import os.path
 import sys
 import getopt
+import itertools
 import pysam
 
 
-def count_amplicons(samin=None, quality=0):
+def count_amplicons(samin=None, quality=0, size=1000000):
     """Count amplicons in the input samfile."""
     assert samin is not None
 
     amplicons = {}
+    amplicon_buffer = []
     for alignment in samin.fetch(until_eof=True):
 
         # don't consider unmapped alignments
@@ -32,12 +34,35 @@ def count_amplicons(samin=None, quality=0):
         # don't consider reads without an amplicon
         if amplicon is None:
             continue
+        
+        # add the amplicon to the buffer
+        amplicon_buffer.append(amplicon)
 
-        # increase the amplicon count
+        # if the amplicon buffer is sufficiently large
+        # add the amplicons to the return dict
+        if len(amplicon_buffer) == size:
+            amplicon_buffer.sort()
+            for amplicon, itergrp in itertools.groupby(amplicon_buffer):
+                count = 0
+                for _ in itergrp:
+                    count += 1
+                if amplicon not in amplicons.keys():
+                    amplicons[amplicon] = count
+                else:
+                    amplicons[amplicon] += count
+            amplicon_buffer = []
+
+    # add the final amplicons to the return dict
+    amplicon_buffer.sort()
+    for amplicon, itergrp in itertools.groupby(amplicon_buffer):
+        count = 0
+        for _ in itergrp:
+            count += 1
         if amplicon not in amplicons.keys():
-            amplicons[amplicon] = 0
-        amplicons[amplicon] += 1
-    #
+            amplicons[amplicon] = count
+        else:
+            amplicons[amplicon] += count
+    amplicon_buffer = []
     return amplicons
 
 
