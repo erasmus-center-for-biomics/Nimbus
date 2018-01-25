@@ -40,18 +40,17 @@ def count_amplicons(samin=None, quality=0, size=1000000):
 
         # if the amplicon buffer is sufficiently large
         # add the amplicons to the return dict
-        if len(amplicon_buffer) == size:
-            amplicon_buffer.sort()
-            for amplicon, itergrp in itertools.groupby(amplicon_buffer):
-                count = 0
-                for _ in itergrp:
-                    count += 1
-                if amplicon not in amplicons.keys():
-                    amplicons[amplicon] = count
-                else:
-                    amplicons[amplicon] += count
-            amplicon_buffer = []
-            sys.stderr.write("%d Amplicons detected\n" % len(amplicons.keys()))
+        # if len(amplicon_buffer) >= size:
+        #     amplicon_buffer.sort()
+        #     for amplicon, itergrp in itertools.groupby(amplicon_buffer):
+        #         count = 0
+        #         for _ in itergrp:
+        #             count += 1
+        #         if amplicon not in amplicons.keys():
+        #             amplicons[amplicon] = count
+        #         else:
+        #             amplicons[amplicon] += count
+        #   amplicon_buffer = []
 
     # add the final amplicons to the return dict
     amplicon_buffer.sort()
@@ -64,6 +63,9 @@ def count_amplicons(samin=None, quality=0, size=1000000):
         else:
             amplicons[amplicon] += count
     amplicon_buffer = []
+    sys.stderr.write("%d Amplicons detected\n" % len(amplicons.keys()))
+        
+    # return a dict with the amplicons and counts
     return amplicons
 
 
