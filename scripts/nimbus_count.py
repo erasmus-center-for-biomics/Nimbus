@@ -34,7 +34,7 @@ def count_amplicons(samin=None, quality=0, size=1000000):
         # don't consider reads without an amplicon
         if amplicon is None:
             continue
-        
+
         # add the amplicon to the buffer
         amplicon_buffer.append(amplicon)
 
@@ -51,6 +51,7 @@ def count_amplicons(samin=None, quality=0, size=1000000):
                 else:
                     amplicons[amplicon] += count
             amplicon_buffer = []
+            sys.stderr.write("%d Amplicons detected\n" % len(amplicons.keys()))
 
     # add the final amplicons to the return dict
     amplicon_buffer.sort()
