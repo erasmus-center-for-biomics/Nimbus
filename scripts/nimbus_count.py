@@ -99,7 +99,10 @@ def nimbus_count(samin=None, bedfile=sys.stdin, outstream=sys.stdout, quality=0)
     # print the amplicons in the design
     for amplicon in design:
         while True:
-            if amplicon == amplicons[ampidx][0]:
+            if ampidx >= len(amplicons):
+                outstream.write("%s\t0\n" % (amplicon))
+                break
+            elif amplicon == amplicons[ampidx][0]:
                 outstream.write("%s\t%d\n" % (amplicon, amplicons[ampidx][1]))
                 ampidx += 1
                 break
