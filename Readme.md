@@ -122,3 +122,5 @@ The analysis of a set of uveal melanoma samples from a study by [Koopmans *et al
 Copy-number variant calling with Nimbus block files and [ExomeDepth](https://cran.r-project.org/web/packages/ExomeDepth/index.html) is described [here](guides/CNV_calling_with_exomedepth/Readme.md).
 
 A guide on how to call structural variants with Nimbus is available [here](guides/structural_variant_calling/Readme.md).
+
+A runtime comparison between Nimbus and other tools is available [here](guides/runtime_comparison/Readme.md).
