@@ -17,7 +17,7 @@ caller: $(obj)
 	mkdir -p bin/
 	$(CC) $(obj) $(baseLDFLAGS) \
 		-pthread \
-		$(htslib) -lm -lz \
+		$(htslib) -lm -lz -lcurl -llzma -lbz2 \
 		-lboost_program_options \
 		-o bin/nimbus_call
 
