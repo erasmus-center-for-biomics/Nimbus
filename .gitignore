@@ -1,5 +1,7 @@
 
 .vscode/*
+*/*/*.pyc
 */*.pyc
+*.pyc
 
 cplusplus/*/build/*
