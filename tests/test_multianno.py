@@ -8,7 +8,7 @@ class TestMultiAnno(unittest.TestCase):
 
     def setUp(self):
         self.infile = os.path.join(
-            os.path.dirname(__file__), "../data/temp.hg19_multianno.txt")
+            os.path.dirname(__file__), "../data/test.hg19_multianno.txt")
         self.handle = open(self.infile, 'r')
 
     def runTest(self):
