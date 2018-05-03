@@ -3,7 +3,7 @@ Description
 
 Nimbus is a software suite for the analysis of amplicon based sequencing data. Nimbus includes tools for data preprocessing, alignment, variant calling, quality control and visualization. The source amplicons are tracked throughout alignment and variant calling allowing probable false positive variants present in a single amplicon to be distinguished from real variants present in all amplicons at the locus. Nimbus also determines the number of reads mapped to each amplicon.
 
-A scientific publication describing Nimbus is currently in preparation.
+Nimbus is published in Bioinformatics: Brouwer,R.W.W. et al. (2018) Nimbus: a design-driven analyses suite for amplicon-based NGS data. *Bioinformatics*.
 
 Build instructions
 ------------------
